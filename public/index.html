@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Voice Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel: Call Controls -->
+        <div class="left-panel">
+            <h2 class="app-title line1">P2S</h2>
+            <h3 class="app-title line2">Voice Call App</h3>
+            <div class="buttons">
+                <button id="startCall"><i class="fas fa-phone"></i></button>
+                <button id="muteButton" disabled><i class="fas fa-microphone"></i></button>
+                <button id="endCall" disabled><i class="fas fa-phone-slash"></i></button>
+            </div>
+            <div class="status">
+                <p id="callStatus">Waiting to connect...</p>
+                <div class="stats-table">
+                    <div class="stats-row">
+                        <span class="stats-label">Jitter:</span>
+                        <span id="jitterDisplay">0 ms</span>
+                    </div>
+                    <div class="stats-row">
+                        <span class="stats-label">Bitrate:</span>
+                        <span id="bitrateDisplay">0 Kbps</span>
+                    </div>
+                    <div class="stats-row">
+                        <span class="stats-label">Avg Jitter:</span>
+                        <span id="avgJitter">-- ms</span>
+                    </div>
+                    <div class="stats-row">
+                        <span class="stats-label">Avg Bitrate:</span>
+                        <span id="avgBitrate">-- Kbps</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Right Panel: Graphs -->
+        <div class="right-panel">
+            <h3>Jitter Over Time</h3>
+            <canvas id="jitterChart"></canvas>
+            <h3>Bitrate Over Time</h3>
+            <canvas id="bitrateChart"></canvas>
+        </div>
+    </div>
+
+    <audio id="audioElement" autoplay></audio>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-peer@9/simplepeer.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
